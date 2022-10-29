@@ -1,6 +1,6 @@
 package handlers;
 
-import common.Type;
+import entity.Purchase;
 
 /**
  * Used as a fallback in approval chain.
@@ -15,13 +15,10 @@ public class ExecutiveMeeting extends Approver {
     }
 
     @Override
-    public void approve(int id, double cost, Type type) {
+    public void approve(Purchase purchase) {
 
-        System.out.println("Purchase with id " + id + " that costs " + cost + " requires an approval of executive meeting.");
-    }
-
-    @Override
-    protected boolean canApprove(int id, double cost, Type type) {
-        return false;
+        System.out.printf("Purchase with id %d that costs %.2f requires an approval of executive meeting.%n",
+                purchase.getId(),
+                purchase.getCost());
     }
 }
